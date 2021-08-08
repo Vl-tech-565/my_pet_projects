@@ -13,7 +13,7 @@ _rus_alphabet = [chr(i) for i in range(1072, 1104)] + [chr(i) for i in range(104
 _alphabets = {'en': _eng_alphabet, 'rus': _rus_alphabet}
 
 
-def _add_encrypted_char(string, original_char, step=step):
+def _add_encrypted_char(string, original_char, step):
     if char.isupper():
         required_index = (alphabet.index(char) + step) % (alphabet_len // 2)  + (alphabet_len // 2)
         encoded_str += alphabet[required_index]
@@ -32,7 +32,7 @@ def encode(original_str, lang='en', step=1):
 
     for char in original_str:
         if char in alphabet:
-            add_encrypted_char(original_str, char, step=step)
+            add_encrypted_char(original_str, char, step)
         else:
             encoded_str += char
 

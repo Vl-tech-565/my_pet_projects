@@ -1,9 +1,4 @@
 """
-NAME: Caesar.py
-AUTHOR: Vladimir Ravinsky
-EMAIL: Ducanto11@yandex.ru
-VERSION: 1.2
-
 this module provides encryption and decryption of strings
  """
 

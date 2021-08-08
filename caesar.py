@@ -13,6 +13,16 @@ _rus_alphabet = [chr(i) for i in range(1072, 1104)] + [chr(i) for i in range(104
 _alphabets = {'en': _eng_alphabet, 'rus': _rus_alphabet}
 
 
+def _add_encrypted_char(string, original_char, step=step):
+    if char.isupper():
+        required_index = (alphabet.index(char) + step) % (alphabet_len // 2)  + (alphabet_len // 2)
+        encoded_str += alphabet[required_index]
+    else:
+        required_index = (alphabet.index(char) + step) % (alphabet_len // 2)
+        encoded_str += alphabet[required_index]
+
+
+
 def encode(original_str, lang='en', step=1):
     '''Return the string with encoding chars according the chosen language. 
     Numbers and other signs do not change.'''
@@ -22,13 +32,7 @@ def encode(original_str, lang='en', step=1):
 
     for char in original_str:
         if char in alphabet:
-            if char.isupper():
-                required_index = (alphabet.index(char) + step) % (alphabet_len // 2)  + (alphabet_len // 2)
-                encoded_str += alphabet[required_index]
-            else:
-                required_index = (alphabet.index(char) + step) % (alphabet_len // 2)
-                encoded_str += alphabet[required_index]
-
+            add_encrypted_char(original_str, char, step=step)
         else:
             encoded_str += char
 
@@ -48,12 +52,7 @@ def encode_all_lang(original_str, step=1):
         for alphabet in _alphabets.values():
             if char in alphabet:
                 alphabet_len = len(alphabet)
-                if char.isupper():
-                    required_index = (alphabet.index(char) + step) % (alphabet_len // 2)  + (alphabet_len // 2)
-                    encoded_str += alphabet[required_index]
-                else:
-                    required_index = (alphabet.index(char) + step) % (alphabet_len // 2)
-                    encoded_str += alphabet[required_index]
+                add_encrypted_char(original_str, char, step=step)
 
     return encoded_str
 
